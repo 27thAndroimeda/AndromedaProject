@@ -9,6 +9,7 @@
         android:layout_height="match_parent"
         android:text="HiHi"
         android:textSize="50sp"
+        
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
