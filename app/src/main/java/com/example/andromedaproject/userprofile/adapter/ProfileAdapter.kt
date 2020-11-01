@@ -1,13 +1,13 @@
-package com.example.andromedaproject.adapter
+package com.example.andromedaproject.userprofile.adapter
 
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.andromedaproject.viewholder.ProfileViewHolder
+import com.example.andromedaproject.userprofile.viewholder.ProfileViewHolder
 import com.example.andromedaproject.R
-import com.example.andromedaproject.model.UserInformationModel
+import com.example.andromedaproject.userprofile.model.UserInformationModel
 import com.example.andromedaproject.ui.ProfileDetailActivity
 
 class ProfileAdapter(private val context: Context) : RecyclerView.Adapter<ProfileViewHolder>() {

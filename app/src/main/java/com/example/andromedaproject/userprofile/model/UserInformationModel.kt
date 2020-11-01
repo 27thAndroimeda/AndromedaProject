@@ -1,7 +1,7 @@
-package com.example.andromedaproject.model
+package com.example.andromedaproject.userprofile.model
 
 data class UserInformationModel(
-    val userProfileImage: Int,
+    val userProfileImage: String,
     val userName: String,
     val userDescription: String
 )

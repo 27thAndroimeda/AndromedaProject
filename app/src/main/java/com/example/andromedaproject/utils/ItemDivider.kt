@@ -1,4 +1,4 @@
-package com.example.andromedaproject.Utils
+package com.example.andromedaproject.utils
 
 import android.graphics.Rect
 import androidx.recyclerview.widget.RecyclerView
