@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.andromedaproject.R
+import com.example.andromedaproject.databinding.FragmentProfileListBinding
 import com.example.andromedaproject.userprofile.adapter.ProfileAdapter
 import com.example.andromedaproject.userprofile.model.UserInformationModel
 import com.example.andromedaproject.utils.DragManageAdapter
@@ -19,6 +21,7 @@ import kotlinx.android.synthetic.main.fragment_profile_list.*
 import kotlin.random.Random
 
 class ProfileListFragment : Fragment() {
+    private lateinit var mBinding: FragmentProfileListBinding
     var datas = mutableListOf<UserInformationModel>()
     lateinit var profileAdapter: ProfileAdapter
 
@@ -26,8 +29,10 @@ class ProfileListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_list, container, false)
+        return FragmentProfileListBinding.inflate(inflater, container, false).let {
+            mBinding = it
+            it.root
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

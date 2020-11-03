@@ -2,8 +2,10 @@ package com.example.andromedaproject.userprofile.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.example.andromedaproject.userprofile.viewholder.ProfileViewHolder
 import com.example.andromedaproject.R
