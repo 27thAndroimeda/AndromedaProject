@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.andromedaproject.userprofile.adapter.ProfileAdapter
 
 
-//DragManageAdapter는 만들 때 생성자로 넣어놓은 ProfileAdapter, Context, Int, Int이렇게 4개가 꼭 필요합니다!
-class DragManageAdapter(adapter: ProfileAdapter, context: Context, dragDirs: Int, swipeDirs: Int) :
-    ItemTouchHelper.SimpleCallback(dragDirs, swipeDirs) {
+//DragManageAdapter는 사용할 때 생성자로 넣어놓은 ProfileAdapter, Context이렇게 2개가 꼭 필요합니다!
+// ->ProfileListFragment에서 사용했으니 사용방법 참고!
+class DragManageAdapter(adapter: ProfileAdapter, context: Context) :
+    ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT, ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT) {
     //위에서 생성자로 넣은 adapter는 ProfileAdapter인데 알아보기 쓸 때 그냥 adapter라고 쓰기보다
     //한눈에 알아볼 수 있도록 profileAdapter라는 변수로 다시 설정해주겠습니다.
     val profileAdapter = adapter
