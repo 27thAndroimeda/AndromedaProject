@@ -17,5 +17,6 @@ class ProfileViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         Glide.with(itemView).load(userInformationModel.userProfileImage).into(imageviewProfile)
         userName.text = userInformationModel.userName
         userDescription.text = userInformationModel.userDescription
+        userDescription.isSelected = true
     }
 }
