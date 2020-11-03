@@ -18,12 +18,12 @@ class ProfileAdapter(private val context: Context) : RecyclerView.Adapter<Profil
         return ProfileViewHolder(view)
     }
 
-    override fun onBindViewHolder(holderLinear: ProfileViewHolder, position: Int) {
-        holderLinear.bind(datas[position])
+    override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
+        holder.bind(datas[position])
 
         val model = datas.get(position)
 
-        holderLinear.itemView.setOnClickListener {
+        holder.itemView.setOnClickListener {
             val intent = Intent(context, ProfileDetailActivity::class.java)
             intent.putExtra("profileImageDetail", model.userProfileImage)
             intent.putExtra("userNameDetail", model.userName)
