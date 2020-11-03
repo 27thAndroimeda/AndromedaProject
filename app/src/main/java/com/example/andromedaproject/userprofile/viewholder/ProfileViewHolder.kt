@@ -9,6 +9,7 @@ import com.example.andromedaproject.R
 import com.example.andromedaproject.userprofile.model.UserInformationModel
 
 class ProfileViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+
     val imageviewProfile: ImageView = itemView.findViewById(R.id.imageview_profile)
     val userName: TextView = itemView.findViewById(R.id.textview_user_name)
     val userDescription: TextView = itemView.findViewById(R.id.textview_user_description)

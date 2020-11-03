@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.andromedaproject.R
 import com.example.andromedaproject.databinding.FragmentProfileListBinding
 import com.example.andromedaproject.userprofile.adapter.ProfileAdapter
 import com.example.andromedaproject.userprofile.model.UserInformationModel
