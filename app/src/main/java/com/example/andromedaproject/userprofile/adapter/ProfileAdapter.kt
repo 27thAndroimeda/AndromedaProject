@@ -38,12 +38,9 @@ class ProfileAdapter(private val context: Context) : RecyclerView.Adapter<Profil
         return datas.size
     }
 
-    //리사이클러뷰 아이템 drag관련 메서드
     fun swapItems(fromPosition: Int, toPosition: Int) {
         if (fromPosition < toPosition) {
             for (i in fromPosition..toPosition - 1) {
-                //datas는 위에서 MutableList로 작성했는데 set함수를 통해서 각각의 인덱스에 값을 부여할 수 있습니다.
-                // ex) stringList.set(3, "a") -> stringList의 3번 인덱스에 a를 넣겠다.
                 datas.set(i, datas.set(i + 1, datas.get(i)))
             }
         } else {
@@ -54,9 +51,7 @@ class ProfileAdapter(private val context: Context) : RecyclerView.Adapter<Profil
         notifyItemMoved(fromPosition, toPosition)
     }
 
-    //아이템 삭제하는 메서드
     fun deleteItems(position: Int) {
-        //리스트의 삭제는 removeAt이라는 함수를 사용합니다. 괄호한에 본인이 지우고 싶은 인덱스를 넣으면 됩니다!
         datas.removeAt(position)
         notifyItemRemoved(position)
     }

@@ -15,8 +15,9 @@ class ProfileDetailActivity : AppCompatActivity() {
         setUserDetailDescription()
     }
 
-    fun setUserDetailDescription(){
-        Glide.with(this).load(intent.getStringExtra("profileImageDetail")).into(imageview_profile_detail)
+    fun setUserDetailDescription() {
+        Glide.with(this).load(intent.getStringExtra("profileImageDetail"))
+            .into(imageview_profile_detail)
         textview_name_detail.setText(intent.getStringExtra("userNameDetail"))
         textview_description_detail.setText(intent.getStringExtra("userDescriptionDetail"))
     }

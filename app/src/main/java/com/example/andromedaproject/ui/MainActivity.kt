@@ -16,13 +16,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setResult(Activity.RESULT_OK, intent)
+
         setViewPagerAdapter()
         setBottomNavigation()
-        viewPagerSlide()
+        tabAndSlideView()
 
     }
-    fun setViewPagerAdapter() {
 
+    fun setViewPagerAdapter() {
         viewpager_fragment.adapter = MainViewPagerAdapter(supportFragmentManager)
         viewpager_fragment.offscreenPageLimit = 2
     }
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun viewPagerSlide() {
+    fun tabAndSlideView() {
         viewpager_fragment.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
                 position: Int,
@@ -57,5 +58,4 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-
 }

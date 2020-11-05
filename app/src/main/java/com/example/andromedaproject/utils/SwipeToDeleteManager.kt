@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.andromedaproject.userprofile.adapter.ProfileAdapter
 
-class SwipeToDeleteAdapter (adapter: ProfileAdapter): ItemTouchHelper.SimpleCallback(0,
+class SwipeToDeleteManager (adapter: ProfileAdapter): ItemTouchHelper.SimpleCallback(0,
     ItemTouchHelper.LEFT)
 {
     var profileAdapter = adapter

@@ -13,14 +13,15 @@ import com.example.andromedaproject.userprofile.adapter.ProfileAdapter
 import com.example.andromedaproject.userprofile.model.UserInformationModel
 import com.example.andromedaproject.utils.DragManageAdapter
 import com.example.andromedaproject.utils.ItemDivider
-import com.example.andromedaproject.utils.SwipeToDeleteAdapter
+import com.example.andromedaproject.utils.SwipeToDeleteManager
 import com.thedeanda.lorem.LoremIpsum
 import kotlinx.android.synthetic.main.fragment_profile_list.*
+import java.lang.IllegalArgumentException
 import kotlin.random.Random
 
 class ProfileListFragment : Fragment() {
     private lateinit var mBinding: FragmentProfileListBinding
-    var datas = mutableListOf<UserInformationModel>()
+    private val data = mutableListOf<UserInformationModel>()
     lateinit var profileAdapter: ProfileAdapter
 
     override fun onCreateView(
@@ -35,27 +36,32 @@ class ProfileListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        init(view)
-        changeLayoutManager(view)
-    }
 
-    fun init(view: View) {
         profileAdapter = ProfileAdapter(view.context)
         recyclerview_profile.adapter = profileAdapter
+
         recyclerview_profile.layoutManager = LinearLayoutManager(view.context)
         recyclerview_profile.addItemDecoration(ItemDivider(20, 20))
+
+        changeLayoutManager(view)
+
         moveItemHelper(view)
         deleteItemHelper()
+
         loadDatas()
     }
 
     fun changeLayoutManager(view: View) {
         button_change_layoutmanager.setOnClickListener {
-            if (recyclerview_profile.layoutManager is GridLayoutManager) {
-                recyclerview_profile.layoutManager = LinearLayoutManager(view.context)
-            } else {
-                recyclerview_profile.layoutManager =
+
+            when (recyclerview_profile.layoutManager) {
+                is GridLayoutManager -> recyclerview_profile.layoutManager =
+                    LinearLayoutManager(view.context)
+
+                is LinearLayoutManager -> recyclerview_profile.layoutManager =
                     GridLayoutManager(view.context, 2, GridLayoutManager.VERTICAL, false)
+
+                else -> throw IllegalArgumentException("unknown layout manager: ${recyclerview_profile.layoutManager}")
             }
         }
     }
@@ -69,7 +75,7 @@ class ProfileListFragment : Fragment() {
     }
 
     fun deleteItemHelper() {
-        var itemTouchHelper = ItemTouchHelper(SwipeToDeleteAdapter(profileAdapter))
+        var itemTouchHelper = ItemTouchHelper(SwipeToDeleteManager(profileAdapter))
         itemTouchHelper.attachToRecyclerView(recyclerview_profile)
     }
 
@@ -81,14 +87,15 @@ class ProfileListFragment : Fragment() {
                 lorem.name, lorem.getWords(6, 20)
             )
         }
-        datas.apply {
-            for (i in 0 until loremList.size) {
+
+        data.apply {
+            for (i in loremList.indices) {
                 add(
                     loremList.get(i)
                 )
             }
         }
-        profileAdapter.datas = datas
+        profileAdapter.datas = data
         profileAdapter.notifyDataSetChanged()
     }
 }
