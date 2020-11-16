@@ -13,13 +13,14 @@
         android:id="@+id/cardview_logo"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="50dp"
         app:cardCornerRadius="15dp"
+        app:layout_constraintVertical_bias="0.1"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.5">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_percent="0.3">
 
         <ImageView
             android:id="@+id/imageview_sopt_logo"
@@ -34,9 +35,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="25dp"
         android:text="이름"
         android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardview_logo" />
 
@@ -44,41 +46,45 @@
         android:id="@+id/edittext_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
         android:hint="이름"
         android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textview_name"
         app:layout_constraintTop_toBottomOf="@id/textview_name"
+        app:layout_constraintVertical_bias="0.05"
         app:layout_constraintWidth_percent="0.9" />
 
     <TextView
         android:id="@+id/textview_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="아이디"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/edittext_name"
-        app:layout_constraintTop_toBottomOf="@id/edittext_name" />
+        app:layout_constraintTop_toBottomOf="@id/edittext_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
 
     <EditText
         android:id="@+id/edittext_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
         android:hint="아이디"
         android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textview_id"
         app:layout_constraintTop_toBottomOf="@id/textview_id"
+        app:layout_constraintVertical_bias="0.05"
         app:layout_constraintWidth_percent="0.9" />
 
     <TextView
         android:id="@+id/textview_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="비밀번호"
         android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.05"
         app:layout_constraintStart_toStartOf="@+id/edittext_id"
         app:layout_constraintTop_toBottomOf="@id/edittext_id" />
 
@@ -86,44 +92,49 @@
         android:id="@+id/edittext_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
         android:hint="비밀번호"
         android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textview_password"
         app:layout_constraintTop_toBottomOf="@id/textview_password"
+        app:layout_constraintVertical_bias="0.05"
         app:layout_constraintWidth_percent="0.9" />
+
 
     <TextView
         android:id="@+id/textview_check_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="비밀번호 확인"
         android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/edittext_password"
-        app:layout_constraintTop_toBottomOf="@id/edittext_password" />
+        app:layout_constraintTop_toBottomOf="@id/edittext_password"
+        app:layout_constraintVertical_bias="0.101" />
 
     <EditText
         android:id="@+id/edittext_check_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
         android:hint="비밀번호 확인"
         android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textview_check_password"
         app:layout_constraintTop_toBottomOf="@id/textview_check_password"
+        app:layout_constraintVertical_bias="0.076"
         app:layout_constraintWidth_percent="0.9" />
-
 
     <Button
         android:id="@+id/button_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="회원가입"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edittext_check_password" />
+        app:layout_constraintTop_toBottomOf="@id/edittext_check_password"
+        app:layout_constraintVertical_bias="0.3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

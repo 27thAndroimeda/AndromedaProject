@@ -74,8 +74,8 @@ class SignInActivity : BaseActivity() {
         }
     }
 
-    companion object{
-        var checkAutoLogIn = false
+    companion object {
+        private var checkAutoLogIn = false
         const val REQUEST_CODE_SIGNUP = 100
         const val REQUEST_CODE_LOGIN = 200
     }
