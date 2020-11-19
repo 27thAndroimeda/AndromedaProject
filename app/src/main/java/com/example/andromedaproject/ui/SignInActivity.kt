@@ -68,22 +68,6 @@ class SignInActivity : BaseActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode == Activity.RESULT_OK) {
-            when (requestCode) {
-                REQUEST_CODE_SIGNUP -> {
-                    edittext_id_signin.setText(data?.getStringExtra("email").toString())
-                    edittext_password_signin.setText(data?.getStringExtra("password").toString())
-                }
-                REQUEST_CODE_LOGIN -> {
-                    finish()
-                }
-            }
-        }
-    }
-
     private fun signInForBiometric() {
         button_biometrics.setOnClickListener {
             biometricPrompt.authenticate(promptInfo)
@@ -141,6 +125,22 @@ class SignInActivity : BaseActivity() {
             .setSubtitle("Using FingerPrint")
             .setNegativeButtonText("Sign In Using Password")
             .build()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                REQUEST_CODE_SIGNUP -> {
+                    edittext_id_signin.setText(data?.getStringExtra("email").toString())
+                    edittext_password_signin.setText(data?.getStringExtra("password").toString())
+                }
+                REQUEST_CODE_LOGIN -> {
+                    finish()
+                }
+            }
+        }
     }
 
     companion object {

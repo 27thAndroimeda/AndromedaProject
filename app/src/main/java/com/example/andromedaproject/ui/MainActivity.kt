@@ -49,11 +49,9 @@ class MainActivity : AppCompatActivity() {
                 positionOffsetPixels: Int
             ) {
             }
-
             override fun onPageSelected(position: Int) {
                 bottom_navigation_main.menu.getItem(position).isChecked = true
             }
-
             override fun onPageScrollStateChanged(state: Int) {
             }
         })
