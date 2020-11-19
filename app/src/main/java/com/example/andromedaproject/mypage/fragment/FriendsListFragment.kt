@@ -42,6 +42,7 @@ class FriendsListFragment : Fragment() {
         recyclerview_friends_list.addItemDecoration(ItemVerticalDivider(15))
     }
 
+    //Retrofit으로 서버통신 구현
     private fun getFriendsData() {
         retrofitClient = RetrofitClient.create(InterfaceMypage::class.java)
         retrofitClient.getFriendsList().enqueue(object : Callback<List<Repository>> {
