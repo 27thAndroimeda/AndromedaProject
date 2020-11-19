@@ -23,12 +23,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun setViewPagerAdapter() {
+    private fun setViewPagerAdapter() {
         viewpager_fragment.adapter = MainViewPagerAdapter(supportFragmentManager)
         viewpager_fragment.offscreenPageLimit = 2
     }
 
-    fun setBottomNavigation() {
+    private fun setBottomNavigation() {
         bottom_navigation_main.setOnNavigationItemSelectedListener {
             var index by Delegates.notNull<Int>()
             when (it.itemId) {
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun tabAndSlideView() {
+    private fun tabAndSlideView() {
         viewpager_fragment.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
                 position: Int,

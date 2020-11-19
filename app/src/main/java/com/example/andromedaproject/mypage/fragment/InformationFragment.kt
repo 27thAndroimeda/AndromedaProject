@@ -31,7 +31,7 @@ class InformationFragment : Fragment() {
         signOut()
     }
 
-    fun signOut() {
+    private fun signOut() {
         button_sign_out.setOnClickListener {
             pref = (activity as MainActivity).getSharedPreferences("pref", Context.MODE_PRIVATE)
             editor = pref.edit()

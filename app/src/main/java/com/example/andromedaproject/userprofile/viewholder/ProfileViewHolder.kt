@@ -10,9 +10,9 @@ import com.example.andromedaproject.userprofile.model.UserInformationModel
 
 class ProfileViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-    val imageviewProfile: ImageView = itemView.findViewById(R.id.imageview_profile)
-    val userName: TextView = itemView.findViewById(R.id.textview_user_name)
-    val userDescription: TextView = itemView.findViewById(R.id.textview_user_description)
+    private val imageviewProfile: ImageView = itemView.findViewById(R.id.imageview_profile)
+    private val userName: TextView = itemView.findViewById(R.id.textview_user_name)
+    private val userDescription: TextView = itemView.findViewById(R.id.textview_user_description)
 
     fun bind(userInformationModel: UserInformationModel){
         Glide.with(itemView).load(userInformationModel.userProfileImage).into(imageviewProfile)
