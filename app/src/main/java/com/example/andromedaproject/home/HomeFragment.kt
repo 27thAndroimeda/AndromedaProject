@@ -23,10 +23,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         button_test_recognition.setOnClickListener {
             startActivity(Intent((context as MainActivity), VoiceRecognitionActivity::class.java))
-
         }
     }
 }

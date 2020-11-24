@@ -3,10 +3,19 @@ package com.example.andromedaproject.ui
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import com.example.andromedaproject.R
+import com.example.andromedaproject.signup.InterfaceSignUp
+import com.example.andromedaproject.signup.ResponseSignUp
+import com.example.andromedaproject.signup.UserModel
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class SignUpActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +25,7 @@ class SignUpActivity : BaseActivity() {
         completeSignUp()
     }
 
-    fun completeSignUp() {
+    private fun completeSignUp() {
         button_signup.setOnClickListener {
 
             val isInfoBlank = blankInfoCheck(
@@ -27,12 +36,11 @@ class SignUpActivity : BaseActivity() {
             )
             val isValidatePassword = checkPassword(edittext_password, edittext_check_password)
 
-            if (isInfoBlank and isValidatePassword) goToSignInActivity()
-
+            if (isInfoBlank and isValidatePassword) restfulSignUp()
         }
     }
 
-    fun blankInfoCheck(
+    private fun blankInfoCheck(
         name: EditText,
         id: EditText,
         password: EditText,
@@ -48,7 +56,7 @@ class SignUpActivity : BaseActivity() {
         }
     }
 
-    fun checkPassword(password: EditText, passwordCheck: EditText): Boolean {
+    private fun checkPassword(password: EditText, passwordCheck: EditText): Boolean {
         if (password.text.toString().equals(passwordCheck.text.toString())) {
             return true
         } else {
@@ -58,6 +66,38 @@ class SignUpActivity : BaseActivity() {
     }
 
 
+    private fun restfulSignUp() {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://15.164.83.210:3000")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        retrofit.create(InterfaceSignUp::class.java).interfaceSignUp(
+            UserModel(
+                edittext_id.text.toString(),
+                edittext_password.text.toString(),
+                edittext_name.text.toString()
+            )
+        ).enqueue(object: Callback<ResponseSignUp>{
+            override fun onResponse(
+                call: Call<ResponseSignUp>,
+                response: Response<ResponseSignUp>
+            ) {
+                if (response.isSuccessful){
+                    if (response.body()!!.success){
+                        goToSignInActivity()
+                        Log.d("status", response.body()!!.data.toString())
+                    }
+                }
+
+            }
+
+            override fun onFailure(call: Call<ResponseSignUp>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
     fun goToSignInActivity() {
         val intent = Intent()
         intent.putExtra("email", edittext_id.text.toString())
@@ -65,4 +105,5 @@ class SignUpActivity : BaseActivity() {
         setResult(Activity.RESULT_OK, intent)
         finish()
     }
+
 }

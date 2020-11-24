@@ -51,17 +51,16 @@ class FriendsListFragment : Fragment() {
                 response: Response<List<Repository>>
             ) {
                 if (response.isSuccessful) {
-                    friendsListAdapter.datas.addAll(response!!.body() as List<Repository>)
+                    friendsListAdapter.datas.addAll(response.body() as List<Repository>)
                     friendsListAdapter.notifyDataSetChanged()
                 } else {
-                    Log.d("ERROR", "${response.errorBody().toString()}")
+                    Log.d("ERROR", response.errorBody().toString())
                 }
             }
 
             override fun onFailure(call: Call<List<Repository>>, t: Throwable) {
-                Log.e("ERROR", "error message: ${t}")
+                Log.e("ERROR", "error message: $t")
             }
         })
-
     }
 }

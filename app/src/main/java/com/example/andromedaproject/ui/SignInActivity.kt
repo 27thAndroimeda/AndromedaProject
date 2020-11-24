@@ -11,7 +11,15 @@ import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import com.example.andromedaproject.R
+import com.example.andromedaproject.signin.RequestSignIn
+import com.example.andromedaproject.signin.ResponseSignIn
+import com.example.andromedaproject.signin.SignInModel
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.Executor
 
 class SignInActivity : BaseActivity() {
@@ -43,13 +51,42 @@ class SignInActivity : BaseActivity() {
 
         button_signin.setOnClickListener {
             if (!(edittext_id_signin.text.isNullOrBlank() || edittext_password_signin.text.isNullOrBlank())) {
-                checkAutoLogIn = true
-                editor.putBoolean("checkAutoLogIn", checkAutoLogIn)
-                editor.putString("email", edittext_id_signin.text.toString())
-                editor.apply()
-                startActivityForResult(Intent(this, MainActivity::class.java), REQUEST_CODE_LOGIN)
+                restfulSignIn()
             }
         }
+    }
+
+    private fun restfulSignIn() {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://15.164.83.210:3000")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        retrofit.create(RequestSignIn::class.java).requestSignIn(
+            SignInModel(
+                edittext_id_signin.text.toString(),
+                edittext_password_signin.text.toString()
+            )
+        ).enqueue(object : Callback<ResponseSignIn> {
+            override fun onResponse(
+                call: Call<ResponseSignIn>,
+                response: Response<ResponseSignIn>
+            ) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.success) {
+                        goToMainActivity()
+                        Log.d("data", response.body()!!.data.toString())
+                    }
+                } else {
+                    Toast.makeText(this@SignInActivity, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseSignIn>, t: Throwable) {
+                Log.e("retrofit error:", "$t")
+            }
+        })
     }
 
     private fun autoLogin() {
@@ -59,6 +96,17 @@ class SignInActivity : BaseActivity() {
             val intent = Intent(applicationContext, MainActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_LOGIN)
         }
+    }
+
+    private fun goToMainActivity() {
+        checkAutoLogIn = true
+        editor.putBoolean("checkAutoLogIn", checkAutoLogIn)
+        editor.putString("email", edittext_id_signin.text.toString())
+        editor.apply()
+        startActivityForResult(
+            Intent(this@SignInActivity, MainActivity::class.java),
+            REQUEST_CODE_LOGIN
+        )
     }
 
     private fun gotoSignUp() {
@@ -121,8 +169,8 @@ class SignInActivity : BaseActivity() {
 
     fun generateBiometricDialog() {
         promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Biometric Auth For PEACE Application")
-            .setSubtitle("Using FingerPrint")
+            .setTitle("PEACE Application")
+            .setSubtitle("Biometric Authentication")
             .setNegativeButtonText("Sign In Using Password")
             .build()
     }

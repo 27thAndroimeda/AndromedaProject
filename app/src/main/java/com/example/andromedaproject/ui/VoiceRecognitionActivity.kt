@@ -32,7 +32,7 @@ class VoiceRecognitionActivity : AppCompatActivity() {
     }
 
 
-    fun startRecognize() {
+    private fun startRecognize() {
         button_stt.setOnClickListener {
             val sttIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
             // Language model defines the purpose, there are special models for other use cases, like search.
@@ -55,7 +55,7 @@ class VoiceRecognitionActivity : AppCompatActivity() {
         }
     }
 
-    fun convertToSpeech(){
+    private fun convertToSpeech(){
         button_tts.setOnClickListener {
             // Get the text to be converted to speech from our EditText.
             val text = edittext_tts.text.toString().trim()

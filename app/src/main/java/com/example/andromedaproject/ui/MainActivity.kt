@@ -2,6 +2,8 @@ package com.example.andromedaproject.ui
 
 import android.app.Activity
 import android.os.Bundle
+import android.view.GestureDetector
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.andromedaproject.R
@@ -9,7 +11,7 @@ import com.example.andromedaproject.userprofile.adapter.MainViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.properties.Delegates
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),GestureDetector.OnGestureListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,4 +58,27 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
+    override fun onDown(p0: MotionEvent?): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSingleTapUp(p0: MotionEvent?): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun onFling(p0: MotionEvent?, p1: MotionEvent?, p2: Float, p3: Float): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLongPress(p0: MotionEvent?) {}
+
+    override fun onScroll(p0: MotionEvent?, p1: MotionEvent?, p2: Float, p3: Float): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun onShowPress(p0: MotionEvent?) {}
+
+
+
 }
