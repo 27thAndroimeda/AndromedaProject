@@ -11,6 +11,7 @@ import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import com.example.andromedaproject.R
+import com.example.andromedaproject.network.RetrofitClient
 import com.example.andromedaproject.signin.RequestSignIn
 import com.example.andromedaproject.signin.ResponseSignIn
 import com.example.andromedaproject.signin.SignInModel
@@ -31,6 +32,7 @@ class SignInActivity : BaseActivity() {
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var executor: Executor
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
+    private lateinit var retrofitClient: RequestSignIn
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,12 +59,8 @@ class SignInActivity : BaseActivity() {
     }
 
     private fun restfulSignIn() {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://15.164.83.210:3000")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        retrofit.create(RequestSignIn::class.java).requestSignIn(
+        retrofitClient = RetrofitClient.create(RequestSignIn::class.java)
+        retrofitClient.requestSignIn(
             SignInModel(
                 edittext_id_signin.text.toString(),
                 edittext_password_signin.text.toString()

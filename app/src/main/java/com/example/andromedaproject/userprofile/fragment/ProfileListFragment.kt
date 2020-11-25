@@ -13,6 +13,7 @@ import com.example.andromedaproject.userprofile.adapter.ProfileAdapter
 import com.example.andromedaproject.userprofile.model.UserInformationModel
 import com.example.andromedaproject.utils.DragManageAdapter
 import com.example.andromedaproject.utils.ItemHorizontalDivider
+import com.example.andromedaproject.utils.ItemVerticalDivider
 import com.example.andromedaproject.utils.SwipeToDeleteManager
 import com.thedeanda.lorem.LoremIpsum
 import kotlinx.android.synthetic.main.fragment_profile_list.*
@@ -48,7 +49,8 @@ class ProfileListFragment : Fragment() {
         profileAdapter = ProfileAdapter(view.context)
         recyclerview_profile.adapter = profileAdapter
         recyclerview_profile.layoutManager = LinearLayoutManager(view.context)
-        recyclerview_profile.addItemDecoration(ItemHorizontalDivider(20, 20))
+        recyclerview_profile.addItemDecoration(ItemHorizontalDivider(20))
+        recyclerview_profile.addItemDecoration(ItemVerticalDivider(20))
     }
 
     private fun changeLayoutManager(view: View) {

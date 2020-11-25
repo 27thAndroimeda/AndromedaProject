@@ -2,10 +2,8 @@ package com.example.andromedaproject.userprofile.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.example.andromedaproject.userprofile.viewholder.ProfileViewHolder
 import com.example.andromedaproject.R
@@ -23,13 +21,13 @@ class ProfileAdapter(private val context: Context) : RecyclerView.Adapter<Profil
     override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
         holder.bind(datas[position])
 
-        val model = datas.get(position)
+        val eachModel = datas.get(position)
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, ProfileDetailActivity::class.java)
-            intent.putExtra("profileImageDetail", model.userProfileImage)
-            intent.putExtra("userNameDetail", model.userName)
-            intent.putExtra("userDescriptionDetail", model.userDescription)
+            intent.putExtra("profileImageDetail", eachModel.userProfileImage)
+            intent.putExtra("userNameDetail", eachModel.userName)
+            intent.putExtra("userDescriptionDetail", eachModel.userDescription)
             context.startActivity(intent)
         }
     }

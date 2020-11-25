@@ -11,7 +11,7 @@ import com.example.andromedaproject.userprofile.adapter.MainViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.properties.Delegates
 
-class MainActivity : AppCompatActivity(),GestureDetector.OnGestureListener {
+class MainActivity : BaseActivity(), GestureDetector.OnGestureListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

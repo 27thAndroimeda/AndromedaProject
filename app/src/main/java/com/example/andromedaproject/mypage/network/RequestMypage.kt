@@ -4,7 +4,7 @@ import com.example.andromedaproject.mypage.model.Repository
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface InterfaceMypage {
+interface RequestMypage {
     @GET("users/Kotlin/repos")
     fun getFriendsList(): Call<List<Repository>>
 }

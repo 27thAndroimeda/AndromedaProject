@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="peace_yellow">#f5ca6e</color>
     <color name="peace_red">#ec6565</color>
+    <color name="peace_gray">#929292</color>
 </resources>

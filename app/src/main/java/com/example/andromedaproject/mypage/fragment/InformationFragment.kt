@@ -12,6 +12,8 @@ import com.example.andromedaproject.R
 import com.example.andromedaproject.ui.SignInActivity
 import com.example.andromedaproject.ui.SignInActivity.Companion.checkAutoLogIn
 import com.example.andromedaproject.ui.MainActivity
+import com.example.andromedaproject.ui.VoiceRecognitionActivity
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_inforamation.*
 
 
@@ -29,6 +31,13 @@ class InformationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         signOut()
+        goToVoiceRecognition()
+    }
+
+    private fun goToVoiceRecognition(){
+        button_voice_recognition.setOnClickListener {
+            startActivity(Intent((context as MainActivity), VoiceRecognitionActivity::class.java))
+        }
     }
 
     private fun signOut() {
