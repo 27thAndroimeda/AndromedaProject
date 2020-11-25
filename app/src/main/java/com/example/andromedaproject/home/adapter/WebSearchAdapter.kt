@@ -1,4 +1,4 @@
-package com.example.andromedaproject.home
+package com.example.andromedaproject.home.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.andromedaproject.R
-import com.example.andromedaproject.WebViewActivity
+import com.example.andromedaproject.ui.WebViewActivity
+import com.example.andromedaproject.home.model.DocumentsData
+import com.example.andromedaproject.home.viewholder.WebSearchViewHolder
 import kotlinx.android.synthetic.main.item_web_search.view.*
 
 class WebSearchAdapter(private val context: Context ) : RecyclerView.Adapter<WebSearchViewHolder>() {

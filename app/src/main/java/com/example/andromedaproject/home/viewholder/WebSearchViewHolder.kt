@@ -1,9 +1,10 @@
-package com.example.andromedaproject.home
+package com.example.andromedaproject.home.viewholder
 
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.andromedaproject.R
+import com.example.andromedaproject.home.model.DocumentsData
 
 class WebSearchViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
     val title = itemView.findViewById<TextView>(R.id.textview_title)

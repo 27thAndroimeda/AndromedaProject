@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".WebViewActivity"></activity>
+        <activity android:name=".ui.WebViewActivity"></activity>
         <activity android:name=".ui.VoiceRecognitionActivity" />
         <activity
             android:name=".ui.MainActivity"

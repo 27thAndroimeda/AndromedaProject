@@ -3,7 +3,7 @@ package com.example.andromedaproject.userprofile.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.example.andromedaproject.home.HomeFragment
+import com.example.andromedaproject.home.fragment.HomeFragment
 import com.example.andromedaproject.mypage.fragment.MyPageFragment
 import com.example.andromedaproject.userprofile.fragment.ProfileListFragment
 import java.lang.IllegalStateException

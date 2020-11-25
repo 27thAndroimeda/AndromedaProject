@@ -1,5 +1,6 @@
-package com.example.andromedaproject.home
+package com.example.andromedaproject.home.network
 
+import com.example.andromedaproject.home.model.WebSearchModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header

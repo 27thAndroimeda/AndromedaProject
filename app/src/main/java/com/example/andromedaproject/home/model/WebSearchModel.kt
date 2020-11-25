@@ -1,4 +1,4 @@
-package com.example.andromedaproject.home
+package com.example.andromedaproject.home.model
 
 data class WebSearchModel(
     val meta: MetaData,

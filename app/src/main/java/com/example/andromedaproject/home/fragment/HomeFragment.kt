@@ -1,4 +1,4 @@
-package com.example.andromedaproject.home
+package com.example.andromedaproject.home.fragment
 
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.andromedaproject.R
+import com.example.andromedaproject.home.network.RequestWebSearch
+import com.example.andromedaproject.home.adapter.WebSearchAdapter
+import com.example.andromedaproject.home.model.WebSearchModel
 import com.example.andromedaproject.utils.ItemHorizontalDivider
 import com.example.andromedaproject.utils.ItemVerticalDivider
 import kotlinx.android.synthetic.main.fragment_home.*
