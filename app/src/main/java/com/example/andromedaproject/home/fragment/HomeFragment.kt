@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.andromedaproject.R
 import com.example.andromedaproject.home.network.RequestWebSearch
 import com.example.andromedaproject.home.adapter.WebSearchAdapter
+import com.example.andromedaproject.home.model.DocumentsData
 import com.example.andromedaproject.home.model.WebSearchModel
 import com.example.andromedaproject.utils.ItemHorizontalDivider
 import com.example.andromedaproject.utils.ItemVerticalDivider
@@ -18,6 +19,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class HomeFragment : Fragment() {
@@ -40,14 +44,14 @@ class HomeFragment : Fragment() {
         searchDocs(view)
     }
 
-    fun searchDocs(view:View){
+    fun searchDocs(view: View) {
         button_search.setOnClickListener {
             Log.d("버튼눌림", "버튼눌림")
             loadSearchResult(view)
         }
     }
 
-    fun loadSearchResult(view: View){
+    fun loadSearchResult(view: View) {
         val token = "KakaoAK bccddec2477515123ee06ae249c39f95"
 
         val retrofit = Retrofit.Builder()
@@ -60,14 +64,15 @@ class HomeFragment : Fragment() {
         retrofitWebSearch.requestWebSearch(
             token, edittext_search_web.text.toString()
         ).enqueue(
-            object: Callback<WebSearchModel>{
+            object : Callback<WebSearchModel> {
                 override fun onResponse(
                     call: Call<WebSearchModel>,
                     response: Response<WebSearchModel>
                 ) {
-                    if(response.isSuccessful){
+                    if (response.isSuccessful) {
                         searchResultAdapter.datas = response.body()!!.documents
                         searchResultAdapter.notifyDataSetChanged()
+                        showTextViewSearch()
                     }
                 }
 
@@ -76,5 +81,13 @@ class HomeFragment : Fragment() {
                 }
             }
         )
+    }
+
+    fun showTextViewSearch() {
+        if (searchResultAdapter.datas.isNullOrEmpty()) {
+            textview_docs_result.visibility = View.GONE
+        } else {
+            textview_docs_result.visibility = View.VISIBLE
+        }
     }
 }

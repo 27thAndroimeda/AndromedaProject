@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/item_search_result">
+    >
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="30dp"/>
+        app:layout_constraintGuide_begin="20dp"/>
 
     <TextView
         android:id="@+id/textview_title"
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/font_baedal"
         android:text="제목"
-        android:textColor="@color/black"
+        android:textColor="#0000ff"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
@@ -35,7 +35,7 @@
         android:ellipsize="end"
         android:maxLines="3"
         android:text="검색 내용 본문"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="@id/textview_title"
@@ -49,6 +49,7 @@
         android:text="문서 url 링크"
         android:textColor="@color/peace_gray"
         android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/textview_contents"
         app:layout_constraintStart_toStartOf="@id/textview_contents"
         app:layout_constraintEnd_toEndOf="@id/textview_contents"/>
@@ -58,8 +59,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="문서 작성 일시"
+        android:inputType="datetime"
         android:layout_marginTop="5dp"
-        android:textColor="@color/black"
+        android:textColor="@color/peace_gray"
         app:layout_constraintTop_toBottomOf="@id/textview_url"
         app:layout_constraintStart_toStartOf="@id/textview_url"
         app:layout_constraintEnd_toEndOf="@id/textview_url"
@@ -71,6 +73,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="30dp"/>
+        app:layout_constraintGuide_end="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

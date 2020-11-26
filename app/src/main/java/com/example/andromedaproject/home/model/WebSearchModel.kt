@@ -1,6 +1,7 @@
 package com.example.andromedaproject.home.model
 
-data class WebSearchModel(
+data class
+WebSearchModel(
     val meta: MetaData,
     val documents: List<DocumentsData>
 )
